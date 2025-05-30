@@ -12,6 +12,13 @@ body{
     /* background-color: #F3F4F1 !important; */
 }
 
+@media (max-width:1172px) {
+   .hero-text{
+    margin-top: 30vh;
+   }
+    
+}
+
 .back-to-top {
     position: fixed;
     display: none;
