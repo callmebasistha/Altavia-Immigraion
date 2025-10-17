@@ -855,11 +855,17 @@ North York, ON, M2J0G1</p>
                 alert("Please fill in your name, email, and message!");
                 return;
             }
+            const isMobile = /iPhone|iPad|Android/i.test(navigator.userAgent);
 
             const body = `Name: ${name}%0AEmail: ${email}%0AMobile: ${mobile}%0A%0AMessage:%0A${message}`;
-            const mailtoLink = `https://mail.google.com/mail/?view=cm&fs=1&to=contact@altaviaimmigration.com&su=${encodeURIComponent(subject)}&body=${body}`;
+            if (isMobile) {
+                const mailtoLink = `mailto:contact@altaviaimmigration.com?subject=${encodeURIComponent(subject)}&body=${body}`;
+                window.location.href = mailtoLink;
+            } else {
+                const mailtoLink = `https://mail.google.com/mail/?view=cm&fs=1&to=contact@altaviaimmigration.com&su=${encodeURIComponent(subject)}&body=${body}`;
+                window.open(mailtoLink, "_blank");
+            }
 
-            window.open(mailtoLink, "_blank");
         });
     </script>
 </body>
